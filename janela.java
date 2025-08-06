@@ -4,7 +4,7 @@ import java.awt.*;
 public class janela {
     public static void main(String[] args) {
         JFrame frame = new JFrame("Poupex");
-        frame.setSize(400, 300);
+        frame.setSize(500, 400);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     /* 
@@ -61,10 +61,12 @@ public class janela {
         gbc.gridy++;
         gbc.gridx = 0;
 
+        //campo inativo de resultado
         JLabel result = new JLabel("Total poupado R$: ");
         result.setFont(null); //arrumar estilização
         JTextField resultField = new JTextField();
         resultField.setPreferredSize(new Dimension(150, 25));//necessário definir um setText ao campo de resultado
+        resultField.setEditable(false);
 
         text.add(result, gbc);
         gbc.gridx = 1;
@@ -75,21 +77,23 @@ public class janela {
         JButton ok = new JButton("OK");
         ok.setPreferredSize(new Dimension(150, 25));
         ok.addActionListener(e -> {
-            double juros = Double.parseDouble(feesField.getText().trim()) / 100.0;
-            int anos = Integer.parseInt(yearsField.getText().trim());
-            int meses = anos *12;
-            String convert = depositField.getText().trim();
-            double deposito = Double.parseDouble(convert);
-            double resultado = 0.0;
+    try {
+        double juros = Double.parseDouble(feesField.getText().trim()) / 100.0;
+        int anos = Integer.parseInt(yearsField.getText().trim());
+        int meses = anos * 12;
+        double deposito = Double.parseDouble(depositField.getText().trim());
+        double resultado = 0.0;
 
-            for (int i = 0; i< meses; i++){
-                resultado += deposito;
-                resultado += resultado * juros;
-            }        
-            resultField.setText(String.format("%.2f", resultado));
-            resultField.setEditable(false);
-        });
-        
+        for (int i = 0; i < meses; i++) {
+            resultado += deposito;
+            resultado += resultado * juros;
+        }
+        resultField.setText(String.format("%.2f", resultado));
+    } catch (NumberFormatException ex) {
+        JOptionPane.showMessageDialog(frame, "Por favor, preencha todos os campos corretamente.", "Erro", JOptionPane.ERROR_MESSAGE);
+    }
+    });
+  
         gbc.gridx = 0;
         gbc.gridwidth = 2; 
         text.add(ok, gbc);
@@ -97,6 +101,8 @@ public class janela {
 
         frame.setLayout(new BorderLayout());
         frame.add(text, BorderLayout.CENTER);
+        frame.pack(); // ajusta o tamanho automaticamente
+        frame.setLocationRelativeTo(null); // centraliza na tela
         frame.setVisible(true);
     }
 }
