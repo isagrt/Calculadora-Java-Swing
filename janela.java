@@ -6,12 +6,6 @@ public class janela {
         JFrame frame = new JFrame("Poupex");
         frame.setSize(500, 400);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-    /* 
-        JPanel principal = new JPanel();
-        principal.setBackground(new Color(171, 171, 171));
-        principal.setLayout(new BorderLayout(10, 10));
-    */ 
         
         //Painel com os labels
         JPanel text = new JPanel();
@@ -30,7 +24,7 @@ public class janela {
         fees.setFont(new Font("Verdana", Font.BOLD, 15));
         JTextField feesField = new JTextField();
         feesField.setPreferredSize(new Dimension(150, 25));
-        //feesField.setText(new Font("Verdana", Font.BOLD, 15));
+        feesField.setFont(new Font("Verdana", Font.PLAIN, 15));
 
         text.add(fees, gbc);
         gbc.gridx = 1; // label na coluna (horizontal)
@@ -43,6 +37,7 @@ public class janela {
         years.setFont(new Font("Verdana", Font.BOLD, 15));
         JTextField yearsField = new JTextField();
         yearsField.setPreferredSize(new Dimension(150, 25));
+        yearsField.setFont(new Font("Verdana", Font.PLAIN, 15));
 
         text.add(years, gbc);
         gbc.gridx = 1;
@@ -55,6 +50,7 @@ public class janela {
         deposit.setFont(new Font("Verdana", Font.BOLD, 15));
         JTextField depositField = new JTextField();
         depositField.setPreferredSize(new Dimension(150, 25));
+        depositField.setFont(new Font("Verdana", Font.PLAIN, 15));
 
         text.add(deposit, gbc);
         gbc.gridx = 1;
@@ -94,7 +90,7 @@ public class janela {
                 }
                 resultField.setText(String.format("%.2f", resultado));
             } catch (NumberFormatException ex) {
-                JOptionPane.showMessageDialog(frame, "Por favor, preencha todos os campos corretamente.", "Erro", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(frame, "Por favor, preencha todos os campos corretamente.", "Erro!!", JOptionPane.ERROR_MESSAGE);
             }
             });
   
@@ -110,14 +106,3 @@ public class janela {
         frame.setVisible(true);
     }
 }
-/*
-        double jurostotal = Double.parseDouble(txtJuros.getText()) / 100.0;
-            int anos = Integer.parseInt(txtAnos.getText());
-            double deposito = Double.parseDouble(txtDeposito.getText());
-            int meses = anos * 12;
-            double total = 0.0;
- 
-            for (int i = 0; i < meses; i++) {
-                total += deposito;
-                total += total * jurostotal;
- */
