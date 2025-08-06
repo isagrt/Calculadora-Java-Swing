@@ -15,21 +15,22 @@ public class janela {
         
         //Painel com os labels
         JPanel text = new JPanel();
-        text.setBackground(new Color(171, 171, 171));
+        text.setBackground(new Color(235, 235, 235));
         text.setBorder(BorderFactory.createLineBorder(Color.black, 2));
         text.setLayout(new GridBagLayout());
 
         GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(15, 1, 15, 5);
+        gbc.insets = new Insets(15, 10, 15, 10);
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.gridx = 0;
         gbc.gridy = 0;
         
         //juros
         JLabel fees = new JLabel("Juros ao mes %: ");
-        fees.setFont(null);// arrumar estilização
+        fees.setFont(new Font("Verdana", Font.BOLD, 15));
         JTextField feesField = new JTextField();
         feesField.setPreferredSize(new Dimension(150, 25));
+        //feesField.setText(new Font("Verdana", Font.BOLD, 15));
 
         text.add(fees, gbc);
         gbc.gridx = 1; // label na coluna (horizontal)
@@ -39,7 +40,7 @@ public class janela {
 
         //anos
         JLabel years = new JLabel("N° de anos: ");
-        years.setFont(null);// arrumar estilização
+        years.setFont(new Font("Verdana", Font.BOLD, 15));
         JTextField yearsField = new JTextField();
         yearsField.setPreferredSize(new Dimension(150, 25));
 
@@ -51,7 +52,7 @@ public class janela {
 
         //deposito mensal
         JLabel deposit = new JLabel("Depósito mensal R$: ");
-        deposit.setFont(null); //arrumar estilização
+        deposit.setFont(new Font("Verdana", Font.BOLD, 15));
         JTextField depositField = new JTextField();
         depositField.setPreferredSize(new Dimension(150, 25));
 
@@ -63,9 +64,10 @@ public class janela {
 
         //campo inativo de resultado
         JLabel result = new JLabel("Total poupado R$: ");
-        result.setFont(null); //arrumar estilização
+        result.setFont(new Font("Verdana", Font.BOLD, 16));
         JTextField resultField = new JTextField();
         resultField.setPreferredSize(new Dimension(150, 25));//necessário definir um setText ao campo de resultado
+        resultField.setFont(new Font("Verdana", Font.BOLD, 16));
         resultField.setEditable(false);
 
         text.add(result, gbc);
@@ -76,23 +78,25 @@ public class janela {
 
         JButton ok = new JButton("OK");
         ok.setPreferredSize(new Dimension(150, 25));
+        ok.setBackground(new Color(164, 210, 222));
+        ok.setForeground(new Color(60, 61, 61));
         ok.addActionListener(e -> {
-    try {
-        double juros = Double.parseDouble(feesField.getText().trim()) / 100.0;
-        int anos = Integer.parseInt(yearsField.getText().trim());
-        int meses = anos * 12;
-        double deposito = Double.parseDouble(depositField.getText().trim());
-        double resultado = 0.0;
-
-        for (int i = 0; i < meses; i++) {
-            resultado += deposito;
-            resultado += resultado * juros;
-        }
-        resultField.setText(String.format("%.2f", resultado));
-    } catch (NumberFormatException ex) {
-        JOptionPane.showMessageDialog(frame, "Por favor, preencha todos os campos corretamente.", "Erro", JOptionPane.ERROR_MESSAGE);
-    }
-    });
+            try {
+                double juros = Double.parseDouble(feesField.getText().trim()) / 100.0;
+                int anos = Integer.parseInt(yearsField.getText().trim());
+                int meses = anos * 12;
+                double deposito = Double.parseDouble(depositField.getText().trim());
+                double resultado = 0.0;
+            
+                for (int i = 0; i < meses; i++) {
+                    resultado += deposito;
+                    resultado += resultado * juros;
+                }
+                resultField.setText(String.format("%.2f", resultado));
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(frame, "Por favor, preencha todos os campos corretamente.", "Erro", JOptionPane.ERROR_MESSAGE);
+            }
+            });
   
         gbc.gridx = 0;
         gbc.gridwidth = 2; 
