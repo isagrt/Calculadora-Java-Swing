@@ -10,7 +10,6 @@ public class janela {
         //Painel com os labels
         JPanel text = new JPanel();
         text.setBackground(new Color(248, 236, 224));
-        //text.setBorder(BorderFactory.createLineBorder(Color.black, 2));
         text.setLayout(new GridBagLayout());
 
         GridBagConstraints gbc = new GridBagConstraints();
@@ -27,6 +26,7 @@ public class janela {
         feesField.setFont(new Font("Verdana", Font.PLAIN, 15));
         feesField.setBackground(new Color(252, 246, 242)); 
         feesField.setOpaque(true);
+        feesField.setForeground(new Color(77, 71, 68));
 
         text.add(fees, gbc);
         gbc.gridx = 1; // label na coluna (horizontal)
@@ -42,7 +42,7 @@ public class janela {
         yearsField.setFont(new Font("Verdana", Font.PLAIN, 15));
         yearsField.setBackground(new Color(252, 246, 242)); 
         yearsField.setOpaque(true);
-
+        yearsField.setForeground(new Color(77, 71, 68));
 
         text.add(years, gbc);
         gbc.gridx = 1;
@@ -58,6 +58,7 @@ public class janela {
         depositField.setFont(new Font("Verdana", Font.PLAIN, 15));
         depositField.setBackground(new Color(252, 246, 242)); 
         depositField.setOpaque(true);
+        depositField.setForeground(new Color(77, 71, 68));
 
         text.add(deposit, gbc);
         gbc.gridx = 1;
@@ -74,6 +75,7 @@ public class janela {
         resultField.setEditable(false);
         resultField.setBackground(new Color(252, 246, 242)); 
         resultField.setOpaque(true);
+        resultField.setForeground(new Color(77, 71, 68));
 
         text.add(result, gbc);
         gbc.gridx = 1;
