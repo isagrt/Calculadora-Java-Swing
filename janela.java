@@ -9,12 +9,12 @@ public class janela {
         
         //Painel com os labels
         JPanel text = new JPanel();
-        text.setBackground(new Color(235, 235, 235));
-        text.setBorder(BorderFactory.createLineBorder(Color.black, 2));
+        text.setBackground(new Color(248, 236, 224));
+        //text.setBorder(BorderFactory.createLineBorder(Color.black, 2));
         text.setLayout(new GridBagLayout());
 
         GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(15, 10, 15, 10);
+        gbc.insets = new Insets(15, 15, 15, 15);
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.gridx = 0;
         gbc.gridy = 0;
@@ -25,6 +25,8 @@ public class janela {
         JTextField feesField = new JTextField();
         feesField.setPreferredSize(new Dimension(150, 25));
         feesField.setFont(new Font("Verdana", Font.PLAIN, 15));
+        feesField.setBackground(new Color(252, 246, 242)); 
+        feesField.setOpaque(true);
 
         text.add(fees, gbc);
         gbc.gridx = 1; // label na coluna (horizontal)
@@ -38,6 +40,9 @@ public class janela {
         JTextField yearsField = new JTextField();
         yearsField.setPreferredSize(new Dimension(150, 25));
         yearsField.setFont(new Font("Verdana", Font.PLAIN, 15));
+        yearsField.setBackground(new Color(252, 246, 242)); 
+        yearsField.setOpaque(true);
+
 
         text.add(years, gbc);
         gbc.gridx = 1;
@@ -51,6 +56,8 @@ public class janela {
         JTextField depositField = new JTextField();
         depositField.setPreferredSize(new Dimension(150, 25));
         depositField.setFont(new Font("Verdana", Font.PLAIN, 15));
+        depositField.setBackground(new Color(252, 246, 242)); 
+        depositField.setOpaque(true);
 
         text.add(deposit, gbc);
         gbc.gridx = 1;
@@ -65,6 +72,8 @@ public class janela {
         resultField.setPreferredSize(new Dimension(150, 25));//necessário definir um setText ao campo de resultado
         resultField.setFont(new Font("Verdana", Font.BOLD, 16));
         resultField.setEditable(false);
+        resultField.setBackground(new Color(252, 246, 242)); 
+        resultField.setOpaque(true);
 
         text.add(result, gbc);
         gbc.gridx = 1;
@@ -74,7 +83,7 @@ public class janela {
 
         JButton ok = new JButton("OK");
         ok.setPreferredSize(new Dimension(150, 25));
-        ok.setBackground(new Color(164, 210, 222));
+        ok.setBackground(new Color(241, 162, 5));
         ok.setForeground(new Color(60, 61, 61));
         ok.addActionListener(e -> {
             try {
@@ -94,12 +103,22 @@ public class janela {
             }
             });
   
+        
         gbc.gridx = 0;
         gbc.gridwidth = 2; 
         text.add(ok, gbc);
         gbc.gridwidth = 1; 
 
+        ImageIcon brain = new ImageIcon("image/Brain - 480x480.png");
+        Image scale = brain.getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH);
+        ImageIcon resizedBrain = new ImageIcon(scale);
+        JLabel brainLabel = new JLabel(resizedBrain);
+        brainLabel.setBackground(new Color(248, 236, 224));
+        brainLabel.setOpaque(true);
+          
+        
         frame.setLayout(new BorderLayout());
+        frame.add(brainLabel, BorderLayout.EAST);
         frame.add(text, BorderLayout.CENTER);
         frame.pack(); // ajusta o tamanho automaticamente
         frame.setLocationRelativeTo(null); // centraliza na tela
